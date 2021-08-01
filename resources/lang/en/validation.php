@@ -135,9 +135,7 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'no_of_product'=>'no of products'
     ],
 
     /*

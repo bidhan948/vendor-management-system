@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,59 +15,26 @@ class CategoryController extends Controller
         return view('category.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(CategoryRequest $categoryRequest,Category $category): RedirectResponse
     {
-        //
+        $category->create($categoryRequest->validated());
+        return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
+    public function edit(Category $category): View
     {
-        //
+        return view('category.edit',compact('category'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
+    public function update(CategoryRequest $categoryRequest, Category $category): RedirectResponse
     {
-        //
+        $category->update($categoryRequest->validated());
+        return redirect()->route('category.edit',$category)->with('msg_category','category updated successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
+    public function destroy(Category $category): RedirectResponse
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Category $category)
-    {
-        //
+        $category->delete();
+        return redirect()->route('category.edit',$category)->with('msg_category','Deleted Successfully');
     }
 }
