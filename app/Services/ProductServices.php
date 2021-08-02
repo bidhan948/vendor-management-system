@@ -32,4 +32,19 @@ class ProductServices
         $no_of_product = $product->no_of_product - $productSellRequest->no_of_out_product;
         $product->update(['no_of_product' => $no_of_product]);
     }
+
+    public function userToday($transction)
+    {
+        $total_product = 0;
+        $date_strings = $transction->where('user_id', auth()->user()->id)->values();
+        foreach ($date_strings as $date_string) {
+            $time=$date_string->created_at->toDateString();
+            if ($time == now()->toDateString()) {
+                $total_product += $date_string->no_of_out_product;
+            } else {
+                $total_product += 0;
+            }    
+        }       
+        return $total_product;
+    }
 }

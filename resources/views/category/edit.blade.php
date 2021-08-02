@@ -90,7 +90,7 @@
                                                         <td class=" text-center"><a
                                                                 href="{{ route('category.product.edit', [$category, $product]) }}"
                                                                 class="btn btn-success">{{ __('Edit') }}</a></td>
-                                                        <td class="text-center"><a class="btn btn-danger"
+                                                        <td class="text-center"><a class="btn btn-danger text-white"
                                                                 onclick="event.preventDefault();
                                                                                 document.getElementById('delete_product{{ $i }}').submit();">{{ __('Delete') }}</a>
                                                         </td>
