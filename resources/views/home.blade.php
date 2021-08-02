@@ -129,6 +129,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="progress-group my-4">
+                                <div class="progress-group-prepend"><span class="progress-group-text">loss/profit %</span>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-info" role="progressbar"
+                                            style="width:  {{ (($products->sum('no_of_lost') + $products->sum('no_of_damage')) / $products->sum('no_of_product')) * 100 }}%"
+                                            aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: {{$sold_percent}}%"
+                                            aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
                         @else
                             <div class="row">
                                 <div class="col-6">
@@ -151,35 +166,38 @@
                         @endif
                     </div>
                 </div>
-
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">Purchase Report</div>
-                        <div class="card-body">
-                            <table class="table table-responsive-sm table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">S.no</th>
-                                        <th class="text-center">Name of Product</th>
-                                        <th class="text-center">Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $i = 1
-                                    @endphp
-                                    @dd($transctions)
-                                    @foreach ($transctions->where('user_id', auth()->user()->id)->values() as $transction)
+                @if (!auth()->user()->is_admin)
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">Purchase Report</div>
+                            <div class="card-body">
+                                <table class="table table-responsive-sm table-bordered">
+                                    <thead>
                                         <tr>
-                                            <td class="text-center">{{$i++}}</td>
-                                            <td class="text-center">{{$transction->}}</td>
+                                            <th class="text-center">S.no</th>
+                                            <th class="text-center">Name of Product</th>
+                                            <th class="text-center">Quantity</th>
+                                            <th class="text-center">Purchased At</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $i = 1;
+                                        @endphp
+                                        @foreach ($transctions->where('user_id', auth()->user()->id)->values() as $transction)
+                                            <tr>
+                                                <td class="text-center">{{ $i++ }}</td>
+                                                <td class="text-center">{{ $transction->Product->name }}</td>
+                                                <td class="text-center">{{ $transction->no_of_out_product }}</td>
+                                                <td class="text-center">{{ $transction->created_at }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

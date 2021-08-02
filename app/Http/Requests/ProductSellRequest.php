@@ -26,9 +26,9 @@ class ProductSellRequest extends FormRequest
     {
         $no_of_product = Product::max('no_of_product');
         return [
-            'user_id' => 'required',
+            'user_id' => 'required|integer',
             'product_id' => 'required',
-            'no_of_out_product' => 'integer|between:1,'.$no_of_product
+            'no_of_out_product' => 'required|integer|between:1,'.$no_of_product
         ];
     }
 }

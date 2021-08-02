@@ -24,7 +24,7 @@
                                             <label class="form-col-form-label" for="user_id">{{ __('User') }} <span
                                                     class="text-danger"><b>*</b></span> </label>
                                             <select class="form-control" id="select1" name="user_id">
-                                                <option value="0">--Please select--</option>
+                                                <option>--Please select--</option>
                                                 @foreach ($users as $user)
                                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                 @endforeach
@@ -54,9 +54,10 @@
                                             <label class="form-col-form-label"
                                                 for="no_of_out_product">{{ __('Number of product') }}
                                                 <span class="text-danger"><b>*</b></span> </label>
-                                            <input class="form-control" min="10" max="{{$product->max('no_of_product')}}" @error('no_of_out_product') is-invalid @enderror
-                                                id="no_of_out_product" type="number" spellcheck="false"
-                                                data-ms-editor="true" name="no_of_out_product">
+                                            <input class="form-control" min="10" max="{{ $product->max('no_of_product') }}"
+                                                @error('no_of_out_product') is-invalid @enderror id="no_of_out_product"
+                                                type="number" spellcheck="false" data-ms-editor="true"
+                                                name="no_of_out_product">
                                             @error('no_of_out_product')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
