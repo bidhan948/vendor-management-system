@@ -65,7 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-pill btn-primary" type="submit">{{ __('Update') }}</button>
+                                <button class="btn btn-pill btn-primary" type="submit">{{ __('Submit') }}</button>
                             </form>
                         </div>
                     </div>

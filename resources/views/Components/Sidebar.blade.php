@@ -1,5 +1,5 @@
 <ul class="c-sidebar-nav">
-    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link">
+    <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{route('home')}}">
             <i class="fas fa-tachometer-alt pl-1 pr-4"></i>
             {{ __('Dashboard / Home') }}<span class="badge badge-info"></span></a></li>
     <!-- <li class="c-sidebar-nav-title">" __('') }}</li> -->
