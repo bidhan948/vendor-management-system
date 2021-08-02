@@ -2,40 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductSellRequest;
+use App\Models\Product;
 use App\Models\Transction;
+use App\Models\User;
+use App\Services\ProductServices;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TransctionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(): View
     {
-        //
+        $products = Product::all();
+        $users = User::where('is_admin', False)->get();
+        return view('transction.sell', compact(['products', 'users']));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(ProductSellRequest $productSellRequest,Transction $transction):RedirectResponse
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $transction->create($productSellRequest->validated());
+        (new ProductServices())->updateNoOfProduct($productSellRequest);
+        return redirect()->route('transction.index')->with('msg','Sold Successfully');
     }
 
     /**

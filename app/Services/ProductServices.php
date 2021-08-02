@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\ProductEditRequest;
+use App\Http\Requests\ProductSellRequest;
 use App\Models\Product;
 use App\Models\Transction;
 
@@ -24,5 +25,11 @@ class ProductServices
         }
         $no_of_product = ($product->no_of_product + $add_stock) - ($no_of_damage + $no_of_lost);
         return ["no_of_product" => $no_of_product];
+    }
+    public function updateNoOfProduct(ProductSellRequest $productSellRequest)
+    {
+        $product = Product::firstWhere('id', $productSellRequest->product_id);
+        $no_of_product = $product->no_of_product - $productSellRequest->no_of_out_product;
+        $product->update(['no_of_product' => $no_of_product]);
     }
 }

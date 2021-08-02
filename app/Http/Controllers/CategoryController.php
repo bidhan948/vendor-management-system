@@ -35,6 +35,6 @@ class CategoryController extends Controller
     public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
-        return redirect()->route('category.edit',$category)->with('msg_category','Deleted Successfully');
+        return redirect()->route('/');
     }
 }

@@ -12,6 +12,8 @@ class Transction extends Model
 
     protected $fillable = ['no_of_in_product', 'no_of_out_product', 'user_id', 'product_id'];
 
+    public $with = ['User','Product'];
+    
     public function User()
     {
         return $this->belongsTo(User::class);

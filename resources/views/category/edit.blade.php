@@ -38,6 +38,15 @@
                                 <button class="btn btn-pill btn-primary" type="submit">{{ __('Update') }}</button>
                             </form>
                         </div>
+                        <form action="{{ route('category.destroy', $category) }}" class="d-inline" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <div class="form-group">
+                                <button class="btn btn-danger" type="submit"
+                                    onclick="return confirm('Are you Sure you want to delete this Checklist Group?')">
+                                    {{ __('Delete this Checklist Group') }}</button>
+                            </div>
+                        </form>
                     </div>
                     <div class="card">
                         <div class="card-header"><strong>{{ __('Add Product') }}</strong> </div>
@@ -83,7 +92,7 @@
                                                                 class="btn btn-success">{{ __('Edit') }}</a></td>
                                                         <td class="text-center"><a class="btn btn-danger"
                                                                 onclick="event.preventDefault();
-                                                                            document.getElementById('delete_product{{ $i }}').submit();">{{ __('Delete') }}</a>
+                                                                                document.getElementById('delete_product{{ $i }}').submit();">{{ __('Delete') }}</a>
                                                         </td>
                                                     </tr>
                                                     <form id="delete_product{{ $i }}"

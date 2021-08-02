@@ -10,6 +10,9 @@ Auth::routes();
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('/category',App\Http\Controllers\CategoryController::class);
-    Route::resource('category.product',App\Http\Controllers\ProductController::class);
+    Route::group(['middleware'=>'is_admin'],function(){
+        Route::resource('/category',App\Http\Controllers\CategoryController::class);
+        Route::resource('transction',App\Http\Controllers\TransctionController::class);
+        Route::resource('category.product',App\Http\Controllers\ProductController::class);
+    });
 });
