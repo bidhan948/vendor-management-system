@@ -31,8 +31,8 @@ class ProductController extends Controller
 
     public function update(ProductEditRequest $productEditRequest, Category $category, Product $product): RedirectResponse
     {
-        (new ProductServices())->updateProduct($product,$productEditRequest);
-        $product->update($productEditRequest->validated());
+        $data = (new ProductServices())->updateProduct($product,$productEditRequest);
+        $product->update($productEditRequest->validatedExcept('no_of_product') + $data);
         return redirect()->route('category.edit', $category)->with('msg_product', 'Updated Successfully');
     }
 

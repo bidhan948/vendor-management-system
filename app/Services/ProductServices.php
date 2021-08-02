@@ -16,7 +16,6 @@ class ProductServices
     }
     public function updateProduct(Product $product, ProductEditRequest $productEditRequest)
     {
-        $transction = Transction::firstWhere('product_id', $product->id)->get();
         $no_of_damage = $productEditRequest->no_of_damage ?? 0;
         $no_of_lost = $productEditRequest->no_of_lost ?? 0;
         $add_stock = $productEditRequest->add_stock ?? 0;
@@ -24,5 +23,6 @@ class ProductServices
             Transction::create(['no_of_in_product' => $add_stock, 'product_id' => $product->id]);
         }
         $no_of_product = ($product->no_of_product + $add_stock) - ($no_of_damage + $no_of_lost);
+        return ["no_of_product" => $no_of_product];
     }
 }
