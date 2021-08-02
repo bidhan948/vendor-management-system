@@ -49,7 +49,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-md-3 mt-3">
                                             <label class="form-col-form-label" for="no_of_product">{{ __('Total In products') }} <span
                                                     class="text-danger"><b>*</b></span> </label>
                                             <input class="form-control @error('no_of_product') is-invalid @enderror" id="no_of_product"
@@ -60,6 +60,36 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
+                                        </div>
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-col-form-label" for="no_of_damage">{{ __('Total Damage Product') }} <span
+                                                    class="text-danger"><b>*</b></span> </label>
+                                            <input class="form-control @error('no_of_damage') is-invalid @enderror" id="no_of_damage"
+                                                type="number" spellcheck="false" data-ms-editor="true" name="no_of_damage"
+                                                value="{{ $product->no_of_damage }}">
+                                            @error('no_of_damage')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-col-form-label" for="no_of_lost">{{ __('Total Lost Product') }} <span
+                                                    class="text-danger"><b>*</b></span> </label>
+                                            <input class="form-control @error('no_of_lost') is-invalid @enderror" id="no_of_lost"
+                                                type="number" spellcheck="false" data-ms-editor="true" name="no_of_lost"
+                                                value="{{ $product->no_of_lost }}">
+                                            @error('no_of_lost')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-3 mt-3">
+                                            <label class="form-col-form-label" for="add_stock">{{ __('Add more Stock') }} <span
+                                                    class="text-danger"><b>*</b></span> </label>
+                                            <input class="form-control @error('add_stock') is-invalid @enderror" id="add_stock"
+                                                type="number" spellcheck="false" data-ms-editor="true" name="add_stock">
                                         </div>
                                     </div>
                                 </div>

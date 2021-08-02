@@ -77,7 +77,7 @@
                                                         <td class="text-center">{{ $product->name }}</td>
                                                         <td class="text-center">{{ $product->size }}</td>
                                                         <td class="text-center">{{ $product->color }}</td>
-                                                        <td class="text-center">{{ $product->current }}</td>
+                                                        <td class="text-center">{{ $product->no_of_product }}</td>
                                                         <td class=" text-center"><a
                                                                 href="{{ route('category.product.edit', [$category, $product]) }}"
                                                                 class="btn btn-success">{{ __('Edit') }}</a></td>
