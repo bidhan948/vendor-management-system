@@ -5,6 +5,11 @@
     <!-- <li class="c-sidebar-nav-title">" __('') }}</li> -->
     @if (auth()->user()->is_admin)
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show" style="padding:0px; margin-bottom:-1px;">
+            <a class="c-sidebar-nav-link" href="{{ route('product.create') }}">
+                <i class="fas fa-plus pl-1 pr-4"></i> {{ __('Add Product') }}
+            </a>
+        </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show" style="padding:0px; margin-bottom:-1px;">
             <a class="c-sidebar-nav-link" href="{{ route('transction.index') }}">
                 <i class="fas fa-people-arrows pl-1 pr-4"></i> {{ __('Sell') }}
             </a>
