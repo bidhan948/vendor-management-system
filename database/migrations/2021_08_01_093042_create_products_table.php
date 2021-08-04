@@ -19,8 +19,6 @@ class CreateProductsTable extends Migration
             $table->string('size');
             $table->string('color');
             $table->unsignedInteger('no_of_product');
-            $table->unsignedInteger('no_of_damage')->nullable();
-            $table->unsignedInteger('no_of_lost')->nullable();
             $table->unsignedInteger('current')->nullable();
             $table->softDeletes();
             $table->timestamps();

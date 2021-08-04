@@ -26,12 +26,6 @@ class TransctionController extends Controller
         return redirect()->route('transction.index')->with('msg','Sold Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Transction  $transction
-     * @return \Illuminate\Http\Response
-     */
     public function show(Transction $transction)
     {
         //

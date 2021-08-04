@@ -73,7 +73,7 @@
                                                     <th class="text-center">{{ __('Size') }}</th>
                                                     <th class="text-center">{{ __('color') }}</th>
                                                     <th class="text-center">{{ __('Current Stock') }}</th>
-                                                    <th class="text-center" colspan="2">{{ __('Status') }}</th>
+                                                    <th class="text-center" colspan="4">{{ __('Status') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -88,11 +88,17 @@
                                                         <td class="text-center">{{ $product->color }}</td>
                                                         <td class="text-center">{{ $product->no_of_product }}</td>
                                                         <td class=" text-center"><a
+                                                                href="{{ route('Product.edit', [$product]) }}"
+                                                                class="btn btn-success">{{ __('Loss stock ?') }}</a></td>
+                                                        <td class=" text-center"><a
+                                                                href="{{ route('Product.show', $product) }}"
+                                                                class="btn btn-success">{{ __('Add stock') }}</a></td>
+                                                        <td class=" text-center"><a
                                                                 href="{{ route('category.product.edit', [$category, $product]) }}"
                                                                 class="btn btn-success">{{ __('Edit') }}</a></td>
                                                         <td class="text-center"><a class="btn btn-danger text-white"
                                                                 onclick="event.preventDefault();
-                                                                                document.getElementById('delete_product{{ $i }}').submit();">{{ __('Delete') }}</a>
+                                                                                    document.getElementById('delete_product{{ $i }}').submit();">{{ __('Delete') }}</a>
                                                         </td>
                                                     </tr>
                                                     <form id="delete_product{{ $i }}"

@@ -14,6 +14,11 @@
                 <i class="fas fa-people-arrows pl-1 pr-4"></i> {{ __('Sell') }}
             </a>
         </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show" style="padding:0px; margin-bottom:-1px;">
+            <a class="c-sidebar-nav-link" href="{{ route('transction.index') }}">
+                <i class="fas fa-people-arrows pl-1 pr-4"></i> {{ __('Transction Report') }}
+            </a>
+        </li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a
                 class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle c-active" href="#">
                 <svg class="c-sidebar-nav-icon">

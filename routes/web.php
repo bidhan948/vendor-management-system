@@ -15,5 +15,7 @@ Route::group(['middleware'=>'auth'],function(){
         Route::resource('transction',App\Http\Controllers\TransctionController::class);
         Route::resource('category.product',App\Http\Controllers\ProductController::class);
         Route::resource('product',App\Http\Controllers\MultiCategoryProduct::class);
+        Route::resource('Product',App\Http\Controllers\ProductAddLoss::class);
+        Route::resource('transctionreport',App\Http\Controllers\TransctionReportController::class);
     });
 });

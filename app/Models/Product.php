@@ -10,7 +10,7 @@ class Product extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable = ['name','size','color','no_of_product','no_of_damage','no_of_lost','current'];
+    protected $fillable = ['name','size','color','no_of_product','current'];
 
     public function categories()
     {
